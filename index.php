@@ -93,7 +93,7 @@ $usuarios = "SELECT * FROM empresa";
                                         </div>
                                         <div>
                                             <td><a class="btn btn-warning" href="updateform.php?id=<?php echo $row['Id_Empleado']; ?>"> Modificar</a></td>
-                                            <td><a class="btn btn-danger" href="updateform.php"> Eliminar</a></td>
+                                            <td><a class="btn btn-danger" href="delete.php?id=<?php echo $row['Id_Empleado']; ?>"> Eliminar</a></td>
                                         </div>
                                 </tr>
                             </tbody>
