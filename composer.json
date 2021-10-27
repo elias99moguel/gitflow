@@ -1,5 +1,22 @@
 {
+    "license": "MIT",
+    "name": "crud",
+    "description": "crud empleados",
     "require-dev": {
         "phpunit/phpunit": "^8"
-    }
+    },
+    "authors": [
+        {
+            "name": "Elias Moguel",
+            "email": "elias99moguel@gmail.com"
+        },
+        {
+            "name": "Andrea Turriza",
+            "email": "andreaturriza@gmail.com"
+        },
+        {
+            "name": "Alay Aviles",
+            "email": "alayaviles@gmail.com"
+        }
+    ]
 }
