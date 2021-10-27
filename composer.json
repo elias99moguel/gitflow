@@ -1,6 +1,6 @@
 {
     "license": "MIT",
-    "name": "crud",
+    "name": "vendor/gitflow",
     "description": "crud empleados",
     "require-dev": {
         "phpunit/phpunit": "^8"
