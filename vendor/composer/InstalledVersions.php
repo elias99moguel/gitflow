@@ -29,20 +29,11 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '6b3a2db1839463783f57a0b520236dba8a575604',
-    'name' => '__root__',
+    'reference' => 'a79cf61c168ff4b95d1dd0cbf8c9053c83bfca3e',
+    'name' => 'vendor/gitflow',
   ),
   'versions' => 
   array (
-    '__root__' => 
-    array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '6b3a2db1839463783f57a0b520236dba8a575604',
-    ),
     'doctrine/instantiator' => 
     array (
       'pretty_version' => '1.4.0',
@@ -298,6 +289,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '34a41e998c2183e22995f158c581e7b5e755ab9e',
+    ),
+    'vendor/gitflow' => 
+    array (
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a79cf61c168ff4b95d1dd0cbf8c9053c83bfca3e',
     ),
     'webmozart/assert' => 
     array (
