@@ -4,25 +4,20 @@
 
     $id = $_POST['id'];
     $nombre = $_POST['nombre'];
-    $fechanac = $_POST['fecha'];
+    $fecha = $_POST['fecha'];
     $correo = $_POST['correo'];
+
+
+
+  $sentencia = $base_de_datos->prepare("UPDATE empresa SET nombre = ?, correo = ?, fecha_i = ? WHERE id_empleado = ?;");
+  $resultado = $sentencia->execute([$nombre,$correo, $fecha,$id]); # Pasar en el mismo orden de los ?
+  if ($resultado === true) {
+      header("Location: index.php");
+  } else {
+      echo "Algo salió mal. Por favor verifica que la tabla exista, así como el ID del usuario";
+  }
    
 
    //actualizar los datos
-   $actualizar = "UPDATE empresa SET Nombre='$nombre', Correo='$correo', fecha_I='$fechanac' WHERE Id_Empleado='$id'";
-
- 
-
-    $ejecutar = mysqli_query($conexion,$actualizar)or die("error de registro");
-    
-    if($ejecutar) {
-      echo "<script>alert('Se han actualizado los cambios correctamente, actualice la pagina para ver los cambios');
-      window.location='/gitflow/index.php';</script>";
-    }else{
-      echo "<script>alert('No se pudieron guardar los datos); window.history.go(-1);</script>";
-    }
-  
-    // echo "success";
-
-    mysqli_close($conexion);
+   
 ?>

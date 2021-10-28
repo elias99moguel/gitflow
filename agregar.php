@@ -1,28 +1,28 @@
 <?php 
 
-  include 'conexion.php';
+  
+#Si todo va bien, se ejecuta esta parte del código...
 
+    include "conexion.php";
     $nombre = $_POST['nombre'];
-    $fechanac = $_POST['fecha'];
+    $fecha = $_POST['fecha'];
     $correo = $_POST['correo'];
 
-   // echo $fechanac;
-
-    //$query = "INSERT INTO 'empresa' ('Nombre','Correo','fecha_I') VALUES ('$nombre','$correo','$fechanac');";
-   $query = "INSERT INTO `empresa` (`Nombre`, `Correo`, `fecha_I`) VALUES ('$nombre', '$correo', '$fechanac');";
-
+  //$query = "INSERT INTO 'empresa' ('Nombre','Correo','fecha_I') VALUES ('$nombre','$correo','$fechanac');";
+   //$query = "INSERT INTO `empresa` (`Nombre`, `Correo`, `fecha_I`) VALUES ('$nombre', '$correo', '$fechanac');";
+   $sentencia = $base_de_datos->prepare("INSERT INTO empresa (nombre, correo, fecha_i) VALUES  (?, ?, ?);");
+   $resultado = $sentencia->execute([$nombre, $correo, $fecha]); 
    // echo $query;
 
-    $ejecutar = mysqli_query($conexion,$query)or die("error de registro");
+    //$ejecutar = mysqli_query($conexion,$query)or die("error de registro");
 
-    if($ejecutar) {
-      echo "<script>alert('Se ha agregado un nuevo empleado correctamente, actualice la pagina para ver los cambios');
-      window.location='/gitflow/index.php';</script>";
-    }else{
-      echo "<script>alert('No se pudieron guardar los datos); window.history.go(-1);</script>";
-    }
+    if($resultado===true) {
+      header("Location: index.php");
+    } else {
+    echo "Algo salió mal. Por favor verifica que la tabla exista";
+  }
 
     // echo "success";
 
-    mysqli_close($conexion);
+  
 ?>

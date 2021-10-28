@@ -1,6 +1,8 @@
 <?php
 include 'conexion.php';
-$usuarios = "SELECT * FROM empresa";
+$sentencia = $base_de_datos->query("SELECT id_empleado, nombre, correo, fecha_i FROM empresa");
+$mascotas = $sentencia->fetchAll(PDO::FETCH_OBJ);
+//$sentencia = "SELECT * FROM empresa";
 ?>
 
 
@@ -76,29 +78,17 @@ $usuarios = "SELECT * FROM empresa";
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <?php $resultado = mysqli_query($conexion, $usuarios);
-                                    while ($row = mysqli_fetch_assoc($resultado)) { ?>
-                                        <div>
-                                            <td>#<?php echo $row['Id_Empleado']; ?></td>
-                                        </div>
-                                        <div>
-                                            <td><?php echo $row['Nombre']; ?></td>
-                                        </div>
-                                        <div>
-                                            <td><?php echo $row['Correo']; ?></td>
-                                        </div>
-                                        <div>
-                                            <td><?php echo $row['fecha_I']; ?></td>
-                                        </div>
-                                        <div>
-                                            <td><a class="btn btn-warning" href="updateform.php?id=<?php echo $row['Id_Empleado']; ?>"> Modificar</a></td>
-                                            <td><a class="btn btn-danger" href="delete.php?id=<?php echo $row['Id_Empleado']; ?>"> Eliminar</a></td>
-                                        </div>
-                                </tr>
+                            <?php foreach($mascotas as $mascota){ ?>
+						<tr>
+							<td><?php echo $mascota->id_empleado ?></td>
+							<td><?php echo $mascota->nombre ?></td>
+							<td><?php echo $mascota->correo ?></td>
+                            <td><?php echo $mascota->fecha_i ?></td>
+							<td><a class="btn btn-warning" href="<?php echo "updateform.php?id=" . $mascota->id_empleado?>">Editar </a></td>
+							<td><a class="btn btn-danger" href="<?php echo "delete.php?id=" . $mascota->id_empleado?>">Eliminar </a></td>
+						</tr>
+					<?php } ?>
                             </tbody>
-                        <?php }
-                                    mysqli_free_result($resultado); ?>
                         </table>
                     </div>
                 </div>
