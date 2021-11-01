@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'a79cf61c168ff4b95d1dd0cbf8c9053c83bfca3e',
+    'reference' => 'e33a2aa684bf4cd728832321791ffa3c3f25cd55',
     'name' => 'vendor/gitflow',
   ),
   'versions' => 
@@ -297,7 +297,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'a79cf61c168ff4b95d1dd0cbf8c9053c83bfca3e',
+      'reference' => 'e33a2aa684bf4cd728832321791ffa3c3f25cd55',
     ),
     'webmozart/assert' => 
     array (
