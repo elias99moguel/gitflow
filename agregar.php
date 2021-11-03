@@ -1,9 +1,7 @@
 <?php 
+ 
 
-  
-#Si todo va bien, se ejecuta esta parte del código...
-
-    include "conexion.php";
+include "conexion.php";
     $nombre = $_POST['nombre'];
     $fecha = $_POST['fecha'];
     $correo = $_POST['correo'];
@@ -23,6 +21,9 @@
   }
 
     // echo "success";
+
+
+
 
   
 ?>
