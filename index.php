@@ -86,6 +86,7 @@ $mascotas = $sentencia->fetchAll(PDO::FETCH_OBJ);
                             <td><?php echo $mascota->fecha_i ?></td>
 							<td><a class="btn btn-warning" href="<?php echo "updateform.php?id=" . $mascota->id_empleado?>">Editar </a></td>
 							<td><a class="btn btn-danger" href="<?php echo "delete.php?id=" . $mascota->id_empleado?>">Eliminar </a></td>
+							<td><a class="btn btn-success" href="<?php echo "cartapdf.php?id=" . $mascota->id_empleado?>">Carta </a></td>
 						</tr>
 					<?php } ?>
                             </tbody>

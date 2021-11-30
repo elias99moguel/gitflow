@@ -1,1 +1,1 @@
-{"version":1,"defects":{"Warning":6,"CrudTest::testAdd":4},"times":{"Warning":1.206,"CrudTest::testAdd":0.768}}
+{"version":1,"defects":{"Warning":6,"CrudTest::testAdd":4},"times":{"Warning":1.206,"CrudTest::testAdd":0.939}}
