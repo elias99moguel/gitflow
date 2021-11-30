@@ -39,3 +39,17 @@ jobs:
       with: 
         configuration: phpunit.xml
         memory_limit: 256M
+        
+    - name: Setup PostgreSQL with Postgis
+  # You may pin to the exact commit or the version.
+  # uses: huaxk/postgis-action@6d361800c2fa8b356176fa2c45c569d5a057bc51
+      uses: huaxk/postgis-action@v1.0.0
+      with:
+    # Version of PostgreSQL to use
+       postgresql version: 13.5
+    # POSTGRES_DB - name for the default database that is created
+       postgresql db: d1ss2q41gd1kmr
+    # POSTGRES_USER - create the specified user with superuser power
+       postgresql user: lngjrmswgbdzhc
+    # POSTGRES_PASSWORD - superuser password
+       postgresql password: 84100a40eae650345c85fc831b4781176d6bcc93ea0b7e8da28a95cb9946ac87 
