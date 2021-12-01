@@ -7,9 +7,12 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
 
+  #nuevo
+  test:
+    name: Test
     runs-on: ubuntu-latest
+
     services:
       postgres:
         image: postgres:12
@@ -26,7 +29,7 @@ jobs:
           --health-retries 5
 
     steps:
-    #nuevo
+
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
       with:
@@ -42,7 +45,20 @@ jobs:
         sudo mv migrate.linux-amd64 /usr/bin/migrate
         which migrate
 
+    - name: Run migrations
+      run: make migrateup
 
+    - name: Test
+      run: make test
+  #nuevo fin
+  build:
+
+    runs-on: ubuntu-latest
+      
+
+    steps:
+    #nuevo
+   
     #nuevo fin
     - uses: actions/checkout@v2
 
