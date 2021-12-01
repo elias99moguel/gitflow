@@ -43,8 +43,6 @@ jobs:
         which migrate
 
 
-    - name: Test
-      run: make test
     #nuevo fin
     - uses: actions/checkout@v2
 
