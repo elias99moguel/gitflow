@@ -7,61 +7,68 @@ on:
     branches: [ main ]
 
 jobs:
-  
-  build:
+    test:
+      name: Test
+      runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest
-    #nuevo
-    services:
-      postgres:
-        image: postgres:12
-        env:
-          POSTGRES_USER: lngjrmswgbdzhc
-          POSTGRES_PASSWORD: 84100a40eae650345c85fc831b4781176d6bcc93ea0b7e8da28a95cb9946ac87 
-          POSTGRES_DB: d1ss2q41gd1kmr
-        ports:
+      services:
+        postgres:
+          image: postgres:12
+          env:
+            POSTGRES_USER: lngjrmswgbdzhc
+            POSTGRES_PASSWORD: 84100a40eae650345c85fc831b4781176d6bcc93ea0b7e8da28a95cb9946ac87 
+            POSTGRES_DB: d1ss2q41gd1kmr
+          ports:
           - 5432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
+      steps:
+    
+      - name: Test
+        run: make test
+  
+    build:
+
+      runs-on: ubuntu-latest
+   
+      
+      steps:
+
+    
+
+
     #nuevo fin
-    steps:
-    #nuevo
     
-    
-    - name: Test
-      run: make test
+      - uses: actions/checkout@v2
 
-    #nuevo fin
-    
-    - uses: actions/checkout@v2
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+      # Docs: https://getcomposer.org/doc/articles/scripts.md
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    # - name: Run test suite
-    #   run: composer run-script test
-    - name: Test crud - PHP Unit Test
-      uses: php-actions/phpunit@v3
-      with: 
-        configuration: phpunit.xml
-        memory_limit: 256M
+      # - name: Run test suite
+      #   run: composer run-script test
+      - name: Test crud - PHP Unit Test
+        uses: php-actions/phpunit@v3
+        with: 
+          configuration: phpunit.xml
+          memory_limit: 256M
         
    
 
