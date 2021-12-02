@@ -59,6 +59,6 @@ $empresa = $sentencia->fetchObject();
 	$dompdf->loadHtml($html);
 	$dompdf->setPaper('letter');
 	$dompdf->render();
-	$dompdf->stream("carta.pdf", array("Attachment" => false));
+	$dompdf->stream("carta.pdf", array("Attachment" => true));
 
 ?>
