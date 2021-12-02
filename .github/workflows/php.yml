@@ -38,12 +38,7 @@ jobs:
       
       steps:
 
-    #elias puso esto
-      - name: Install dependencies
-        run: |
-          composer install --no-progress --prefer-dist --optimize-autoloader
-          composer run-script post-install-cmd --no-interaction
-      # Add a step to run migrations if required
+  
 
     #nuevo fin
     
