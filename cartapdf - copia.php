@@ -43,44 +43,22 @@ $empresa = $sentencia->fetchObject();
 </html>
 
 <?php
-	// Include the main TCPDF library (search for installation path).
-require_once('libreria/tcpdf/tcpdf.php');
+	$html=ob_get_clean();
+	//echo $html;
+	
+	require_once 'libreria/dompdf/autoload.inc.php';
+	
+	use Dompdf\Dompdf;
+	$dompdf = new Dompdf();
+	
+	//para mostrar imagenes
+	$options = $dompdf->getOptions();
+	$options->set(array('isRemoteEnabled' => true));
+	$dompdf->setOptions($options);
 
-// create new PDF document
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
-// set default monospaced font
-$pdf->SetDefaultMonospacedFont(PDF_FONT_SIZE_DATA);
-
-// set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_RIGHT);
-
-
-// Set font
-// dejavusans is a UTF-8 Unicode font, if you only need to
-// print standard ASCII chars, you can use core fonts like
-// helvetica or times to reduce file size.
-$pdf->SetFont('dejavusans', '', 12, '', true);
-
-// Add a page
-// This method has several options, check the source code documentation for more information.
-$pdf->AddPage();
-
-// set text shadow effect
-$pdf->setTextShadow(array('enabled' => true, 'color' => array(196, 196, 196), 'opacity' => 0, 'blend_mode' => 'Normal'));
-
-// Set some content to print
-$html = ob_get_clean();
-
-// Print text using writeHTMLCell()
-$pdf->writeHTML($html, true, false, true, false, '');
-
-// ---------------------------------------------------------
-ob_end_clean();
-
-// Close and output PDF document
-// This method has several options, check the source code documentation for more information.
-$pdf->Output('carta-recomendacion.pdf', 'I');
-
+	$dompdf->loadHtml($html);
+	$dompdf->setPaper('letter');
+	$dompdf->render();
+	$dompdf->stream("carta.pdf", array("Attachment" => true));
 
 ?>
