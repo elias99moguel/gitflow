@@ -43,7 +43,7 @@ $empresa = $sentencia->fetchObject();
 </html>
 
 <?php
-	$html=ob_get_clean();
+/*	$html=ob_get_clean();
 	//echo $html;
 	
 	require_once 'libreria/dompdf/autoload.inc.php';
@@ -60,5 +60,5 @@ $empresa = $sentencia->fetchObject();
 	$dompdf->setPaper('letter');
 	$dompdf->render();
 	$dompdf->stream("carta.pdf", array("Attachment" => true));
-
+*/
 ?>
