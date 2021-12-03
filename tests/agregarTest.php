@@ -6,7 +6,7 @@
 
 class CrudTest extends \PHPUnit\Framework\TestCase
 {
-
+/*
 	public function testAdd(){
 		include "conexion.php";
 		$nombre = "Andrea";
@@ -19,5 +19,5 @@ class CrudTest extends \PHPUnit\Framework\TestCase
 
 
 	}
-
+*/
 }
