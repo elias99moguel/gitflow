@@ -14,8 +14,7 @@ jobs:
 
       steps:
     
-      - name: Test
-        run: make test
+
   
     build:
 
