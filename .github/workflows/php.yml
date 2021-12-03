@@ -7,51 +7,34 @@ on:
     branches: [ main ]
 
 jobs:
-    test:
-      name: Test
-      runs-on: ubuntu-latest
+  build:
 
+    runs-on: ubuntu-latest
 
-      steps:
-    
-      - name: Test
-        run: make test
-  
-    build:
+    steps:
+    - uses: actions/checkout@v2
 
-      runs-on: ubuntu-latest
-   
-      
-      steps:
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
 
-  
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v2
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
 
-    #nuevo fin
-    
-      - uses: actions/checkout@v2
+    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+    # Docs: https://getcomposer.org/doc/articles/scripts.md
 
-      - name: Validate composer.json and composer.lock
-        run: composer validate --strict
-
-      - name: Cache Composer packages
-        id: composer-cache
-        uses: actions/cache@v2
-        with:
-          path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
-
-      # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-      # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-      # - name: Run test suite
-      #   run: composer run-script test
-     
-        
-   
-
-
-  
+    # - name: Run test suite
+    #   run: composer run-script test
+    - name: Test crud - PHP Unit Test
+      uses: php-actions/phpunit@v3
+      with: 
+        configuration: phpunit.xml
+        memory_limit: 256M
