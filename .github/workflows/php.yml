@@ -11,20 +11,6 @@ jobs:
       name: Test
       runs-on: ubuntu-latest
 
-      services:
-        postgres:
-          image: postgres:11
-          env:
-            POSTGRES_USER: lngjrmswgbdzhc
-            POSTGRES_PASSWORD: 84100a40eae650345c85fc831b4781176d6bcc93ea0b7e8da28a95cb9946ac87 
-            POSTGRES_DB: d1ss2q41gd1kmr
-          ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
 
       steps:
     
