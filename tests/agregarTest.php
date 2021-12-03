@@ -15,9 +15,9 @@ class CrudTest extends \PHPUnit\Framework\TestCase
 		 $sentencia = $base_de_datos->prepare("INSERT INTO empresa (nombre, correo, fecha_i) VALUES  (?, ?, ?);");
    		$resultado = $sentencia->execute([$nombre, $correo, $fecha]); 
    		
-		$this->assertTrue($resultado);		
+		$this->assertFalse($resultado);		
 
 
 	}
-*/
+
 }
