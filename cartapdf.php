@@ -38,7 +38,7 @@ $empresa = $sentencia->fetchObject();
     <p align="center">FIRMA</p>
     <p align="center">_________</p>
     <p align="center"> <b> Nombre de quien Firma</b> </p>
-    <p align="center"> <b> Nombre de la empresa</b> </p>
+    <p align="center"> <b> UTM</b> </p>
   </body>
 </html>
 
